@@ -232,6 +232,15 @@ Each record is an instruction-style example asking the model to classify a piece
 
 This project demonstrates the potential of large language models, such as Llama3-8b, in domain-specific tasks like emotion text classification. The model's performance, boosted by specialized techniques like LoRA and FlashAttention, underscores the effectiveness of large models in achieving high accuracy in NLP applications.
 
+## Repository Notes
+
+This repository is built on top of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). The emotion-classification-specific parts of this project are:
+
+- `data/emotion_train.json` and `data/emotion_test.json` - the six-class emotion dataset.
+- The training configuration under `config/` used to fine-tune Llama3-8b with LoRA.
+- This `README.md`, which documents the project, methods, and results.
+
+All other files are inherited from the upstream LLaMA-Factory framework.
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
