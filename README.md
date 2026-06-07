@@ -1,6 +1,20 @@
 
 # Emotion Text Classification Using Llama3-8b and LoRA
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Background](#background)
+- [Key Features](#key-features)
+- [Methods](#methods)
+- [Experimentation](#experimentation)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Dataset](#dataset)
+- [Conclusion](#conclusion)
+- [Repository Notes](#repository-notes)
+- [License](#license)
+- [Contact](#contact)
 ## Introduction
 
 This project explores emotion text classification using the Llama3-8b model, enhanced with LoRA and FlashAttention techniques. The model is optimized for identifying six emotion categories: joy, sadness, anger, fear, love, and surprise. The Llama3-8b model demonstrates superior performance with an accuracy of 0.9262, surpassing other transformer models such as Bert-Base, Bert-Large, Roberta-Base, and Roberta-Large.
