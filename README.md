@@ -28,12 +28,9 @@ Natural Language Processing (NLP) has become a key focus area for sentiment anal
 
 The Llama3-8b model, developed by Meta AI, is a large language model optimized for dialogue use cases. It contains 8 billion parameters and features significant improvements over previous models. The Llama3 series incorporates a multi-phase training process that includes pretraining, supervised fine-tuning, and iterative refinement using reinforcement learning with human feedback (RLHF). This process ensures that the model aligns closely with human preferences for helpfulness and safety.
 
-
-
 The architectural advancements in Llama3 include the implementation of Grouped-Query Attention (GQA). GQA clusters queries to share key-value pairs, thus reducing memory and computational costs while maintaining high performance. This method significantly enhances the efficiency of attention calculations, particularly in large-scale models.
 
 Llama3-8b is pretrained on a diverse dataset comprising more than 15 trillion tokens from publicly available data, with the model's knowledge cutoff set at March 2023. The fine-tuning phase utilized publicly available instruction datasets and over 10 million human-annotated examples, ensuring a robust understanding of various language tasks.
-
 
 <div align="center">
     <table>
@@ -69,7 +66,6 @@ Llama3-8b is pretrained on a diverse dataset comprising more than 15 trillion to
     </table>
 </div>
 
-
 ### Instruction Fine-Tuning
 
 Instruction fine-tuning enhances the model's zero-shot learning capabilities across diverse tasks. This technique involves training the model on datasets specifically designed to improve its ability to follow instructions. For example, models trained on datasets like Alpaca-7B can exhibit behaviors similar to OpenAI's text-davinci-003 in understanding and executing instructions.
@@ -87,8 +83,6 @@ LoRA (Low-Rank Adaptation) is a technique used to integrate trainable rank decom
 ### Flash Attention V2
 
 FlashAttention V2 is an optimization technique designed to accelerate the attention mechanism in Transformer models. It focuses on improving computational efficiency and reducing memory usage during training. FlashAttention achieves this by breaking down attention computation into smaller, more manageable chunks, thereby enhancing cache utilization and reducing memory access. Additionally, it employs sparse matrix operations to leverage the sparsity in attention mechanisms, which helps bypass unnecessary computations. Pipelined operations enable parallel execution of different computation stages, further minimizing processing time.
-
-
 
 ## Experimentation
 
@@ -144,12 +138,6 @@ The Llama3-8b model's hyperparameters are set as follows:
     </table>
 </div>
 
-
-
-
-
-
-
 The model is trained using the Adam optimizer, known for its adaptive learning rate capabilities. A cosine learning rate schedule is employed to adjust the learning rate during training. The batch size is set to 5, with gradient accumulation over 4 steps to optimize memory usage. The model is trained for 3 epochs, with the FP16 precision format used to save GPU memory while maintaining performance. The LoRA rank of 8 indicates the order of the low-rank matrix used in the adaptation process.
 
 ### Evaluation Metrics
@@ -200,10 +188,6 @@ The model's performance is compared against other popular NLP models, such as Be
     </table>
 </div>
 
-
-
-
-
 ## Conclusion
 
 This project demonstrates the potential of large language models, such as Llama3-8b, in domain-specific tasks like emotion text classification. The model's performance, boosted by specialized techniques like LoRA and FlashAttention, underscores the effectiveness of large models in achieving high accuracy in NLP applications.
@@ -213,7 +197,6 @@ This project demonstrates the potential of large language models, such as Llama3
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
 This project is based on modifications to the original work available under [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory), which is licensed under the Apache License 2.0.
-
 
 ## Contact
 
