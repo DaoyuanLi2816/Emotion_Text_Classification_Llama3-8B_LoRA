@@ -202,6 +202,15 @@ The model's performance is compared against other popular NLP models, such as Be
     </table>
 </div>
 
+## Setup
+
+This project builds on [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). To set up the environment:
+
+```bash
+git clone https://github.com/DaoyuanLi2816/Emotion_Text_Classification_Llama3-8B_LoRA.git
+cd Emotion_Text_Classification_Llama3-8B_LoRA
+pip install -e ".[torch,metrics]"
+```
 ## Conclusion
 
 This project demonstrates the potential of large language models, such as Llama3-8b, in domain-specific tasks like emotion text classification. The model's performance, boosted by specialized techniques like LoRA and FlashAttention, underscores the effectiveness of large models in achieving high accuracy in NLP applications.
