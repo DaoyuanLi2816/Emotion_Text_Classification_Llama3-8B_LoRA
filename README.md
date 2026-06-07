@@ -211,6 +211,15 @@ git clone https://github.com/DaoyuanLi2816/Emotion_Text_Classification_Llama3-8B
 cd Emotion_Text_Classification_Llama3-8B_LoRA
 pip install -e ".[torch,metrics]"
 ```
+## Usage
+
+Fine-tune Llama3-8b with LoRA on the emotion dataset using the LLaMA-Factory training entry point:
+
+```bash
+llamafactory-cli train config/2024-06-23-23-53-53.yaml
+```
+
+After training, run inference with the fine-tuned LoRA adapter to classify input text into the six emotion categories.
 ## Conclusion
 
 This project demonstrates the potential of large language models, such as Llama3-8b, in domain-specific tasks like emotion text classification. The model's performance, boosted by specialized techniques like LoRA and FlashAttention, underscores the effectiveness of large models in achieving high accuracy in NLP applications.
