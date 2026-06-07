@@ -220,6 +220,14 @@ llamafactory-cli train config/2024-06-23-23-53-53.yaml
 ```
 
 After training, run inference with the fine-tuned LoRA adapter to classify input text into the six emotion categories.
+## Dataset
+
+The model is trained and evaluated on a six-class emotion dataset:
+
+- `data/emotion_train.json` - training split.
+- `data/emotion_test.json` - test split.
+
+Each record is an instruction-style example asking the model to classify a piece of text into one of six emotions: **joy, sadness, anger, fear, love, surprise**. The label distribution is relatively balanced, with "joy" the most frequent and "surprise" the least.
 ## Conclusion
 
 This project demonstrates the potential of large language models, such as Llama3-8b, in domain-specific tasks like emotion text classification. The model's performance, boosted by specialized techniques like LoRA and FlashAttention, underscores the effectiveness of large models in achieving high accuracy in NLP applications.
