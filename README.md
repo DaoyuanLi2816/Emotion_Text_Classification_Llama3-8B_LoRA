@@ -204,22 +204,30 @@ The model's performance is compared against other popular NLP models, such as Be
 
 ## Setup
 
-This project builds on [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). To set up the environment:
+This project uses [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) as a pip dependency — no framework code is vendored here:
 
 ```bash
-git clone https://github.com/DaoyuanLi2816/Emotion_Text_Classification_Llama3-8B_LoRA.git
-cd Emotion_Text_Classification_Llama3-8B_LoRA
-pip install -e ".[torch,metrics]"
+git clone https://github.com/DaoyuanLi2816/llama3-emotion-lora.git
+cd llama3-emotion-lora
+pip install -r requirements.txt   # llamafactory[metrics]; bitsandbytes for 16 GB GPUs
+huggingface-cli login             # the Llama3 weights are gated
 ```
 ## Usage
 
-Fine-tune Llama3-8b with LoRA on the emotion dataset using the LLaMA-Factory training entry point:
+Fine-tune Llama3-8b with LoRA on the emotion dataset (hyperparameters exactly as reported in Table 2 — Adam lr 5e-5, cosine schedule, batch 5 × grad-accum 4, 3 epochs, LoRA rank 8, max length 512, fp16, FlashAttention-2):
 
 ```bash
-llamafactory-cli train config/2024-06-23-23-53-53.yaml
+llamafactory-cli train config/emotion_llama3_lora.yaml
 ```
 
-After training, run inference with the fine-tuned LoRA adapter to classify input text into the six emotion categories.
+Generate predictions for the 2,000-sample test split with the trained adapter, then score them:
+
+```bash
+llamafactory-cli train config/emotion_llama3_predict.yaml
+python scripts/evaluate.py saves/llama3-8b-emotion-lora/predict/generated_predictions.jsonl
+```
+
+The fp16 run fits a 24 GB GPU; on 16 GB cards add `quantization_bit: 4` (QLoRA) to the training config.
 ## Dataset
 
 The model is trained and evaluated on a six-class emotion dataset:
@@ -234,13 +242,12 @@ This project demonstrates the potential of large language models, such as Llama3
 
 ## Repository Notes
 
-This repository is built on top of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). The emotion-classification-specific parts of this project are:
+This project builds on [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) **as a pip dependency** — the framework is not vendored into this repository. Everything tracked here is project-specific:
 
-- `data/emotion_train.json` and `data/emotion_test.json` - the six-class emotion dataset.
-- The training configuration under `config/` used to fine-tune Llama3-8b with LoRA.
-- This `README.md`, which documents the project, methods, and results.
-
-All other files are inherited from the upstream LLaMA-Factory framework.
+- `data/emotion_train.json` / `data/emotion_test.json` — the six-class emotion dataset (16,000 / 2,000 instruction-style records), registered via `data/dataset_info.json`.
+- `config/emotion_llama3_lora.yaml` / `config/emotion_llama3_predict.yaml` — the training and prediction configs reproducing the reported run.
+- `scripts/evaluate.py` — overall and per-class accuracy from the generated predictions.
+- This `README.md` and the figures.
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
