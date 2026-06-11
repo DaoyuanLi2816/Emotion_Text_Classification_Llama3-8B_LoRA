@@ -1,5 +1,15 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/DaoyuanLi2816/llama3-emotion-lora/main/docs/banner.svg" alt="llama3-emotion-lora — six-class emotion text classification (joy, sadness, anger, fear, love, surprise) with Llama3-8B + LoRA + FlashAttention; 92.62% accuracy, beating BERT and RoBERTa baselines." width="880">
+</p>
 
-# Emotion Text Classification Using Llama3-8b and LoRA
+<div align="center">
+
+[![Model](https://img.shields.io/badge/Model-Llama3--8B-7c3aed)](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct)
+[![Built on](https://img.shields.io/badge/built%20on-LLaMA--Factory-blue)](https://github.com/hiyouga/LLaMA-Factory)
+![Accuracy](https://img.shields.io/badge/accuracy-92.62%25-success)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellow.svg)](LICENSE)
+
+</div>
 
 ## Table of Contents
 
