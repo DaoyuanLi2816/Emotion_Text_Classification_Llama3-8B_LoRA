@@ -1,0 +1,31 @@
+# Generate predictions for the emotion test split with the fine-tuned adapter:
+#
+#   llamafactory-cli train config/emotion_llama3_predict.yaml
+#   python scripts/evaluate.py saves/llama3-8b-emotion-lora/predict/generated_predictions.jsonl
+
+### model
+model_name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+adapter_name_or_path: saves/llama3-8b-emotion-lora
+trust_remote_code: true
+
+### method
+stage: sft
+do_predict: true
+predict_with_generate: true
+
+### dataset
+eval_dataset: emotion_test
+dataset_dir: data
+template: llama3
+cutoff_len: 512
+
+### generation
+max_new_tokens: 8
+do_sample: false
+
+### eval
+per_device_eval_batch_size: 8
+fp16: true
+
+### output
+output_dir: saves/llama3-8b-emotion-lora/predict
